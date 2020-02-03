@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
   const [todo, setTodo] = useState("Learn hooks");
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
   return (
     <div className="App">
       <header className="App-header">
