@@ -10,10 +10,7 @@ function App() {
   useEffect(() => {
     document.title = `You clicked ${count} times`;
     if(countries != 0 && countries != null && count <= 1){
-      var ul = document.getElementById("done");
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode("Fetched " + countries.length + " countries."));
-      ul.appendChild(li);
+      BuildDoneList();
     }
   });
 
@@ -53,6 +50,13 @@ function App() {
         setCountries(data)
       })
     }
+  }
+
+  function BuildDoneList(){
+    var ul = document.getElementById("done");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode("Fetched " + countries.length + " countries."));
+    ul.appendChild(li);
   }
 }
 export default App;
