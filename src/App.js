@@ -9,6 +9,12 @@ function App() {
 
   useEffect(() => {
     document.title = `You clicked ${count} times`;
+    if(countries != 0 && countries != null && count <= 1){
+      var ul = document.getElementById("done");
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode("Fetched " + countries.length + " countries."));
+      ul.appendChild(li);
+    }
   });
 
   return (
@@ -21,7 +27,9 @@ function App() {
         <ul>
           <li>{todo}</li>
         </ul>
-		<button onClick={() => {setCount(count + 1); setTodo(count < 5 ? "Learning hooks in progress" : "Learning hooks even more")}}>
+        <ul id="done">
+        </ul>
+		<button onClick={() => {setCount(count + 1); setTodo(count < 5 ? "Learning hooks in progress" : "Learning hooks even more"); GetCountries()}}>
 			Click me
 		</button>
         <a
@@ -35,6 +43,16 @@ function App() {
       </header>
     </div>
   );
-}
 
+  function GetCountries(){
+    if(!countries)
+    {
+      fetch('https://restcountries.eu/rest/v2/all')
+      .then(res => res.json())
+      .then((data) => {
+        setCountries(data)
+      })
+    }
+  }
+}
 export default App;
