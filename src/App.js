@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   const [count, setCount] = useState(0);
   const [todo, setTodo] = useState("Learn hooks");
+  const [countries, setCountries] = useState(0);
 
   useEffect(() => {
     document.title = `You clicked ${count} times`;
