@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-	const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
+  const [todo, setTodo] = useState("Learn hooks");
   return (
     <div className="App">
       <header className="App-header">
@@ -11,7 +12,10 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload. Btw you clicked {count} times.
         </p>
-		<button onClick={() => setCount(count + 1)}>
+        <ul>
+          <li>{todo}</li>
+        </ul>
+		<button onClick={() => {setCount(count + 1); setTodo(count < 5 ? "Learning hooks in progress" : "Learning hooks even more")}}>
 			Click me
 		</button>
         <a
